@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-center">Đăng ký</h3>
+        <form method="POST" action="/register">
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label>Mật khẩu</label>
+            <input type="password" name="password" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label>Vai trò</label>
+            <select name="role" class="form-select">
+              <option value="user">Người thuê dịch vụ</option>
+              <option value="member">Người nhận việc</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

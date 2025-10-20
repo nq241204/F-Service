@@ -1,0 +1,29 @@
+<%- include('../partials/header') %>
+<h2>Ví giao dịch - <%= user.email %></h2>
+<div class="container mt-4">
+  <div class="card p-4 shadow-sm">
+    <h4>Số dư: <strong><%= user.balance.toLocaleString() %> VNĐ</strong></h4>
+    <% if (success_msg) { %>
+      <div class="alert alert-success mt-3"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+      <div class="alert alert-danger mt-3"><%= error_msg %></div>
+    <% } %>
+    <form method="POST" action="/user/wallet/deposit" class="mt-3">
+      <div class="mb-3">
+        <label for="amount" class="form-label">Số tiền nạp (VNĐ)</label>
+        <input type="number" class="form-control" id="amount" name="amount" required min="10000" step="1000" />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Nạp tiền</button>
+    </form>
+
+    <% if (qrCode) { %>
+      <div class="text-center mt-4">
+        <p>Quét mã QR để thanh toán:</p>
+        <img src="<%= qrCode %>" alt="QR Code" class="img-fluid" style="max-width: 200px;" />
+        <p class="text-muted mt-2">Hạn chót: <%= new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }) %></p>
+      </div>
+    <% } %>
+  </div>
+</div>
+<%- include('../partials/footer') %>
